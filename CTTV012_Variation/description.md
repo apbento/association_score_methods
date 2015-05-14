@@ -1,13 +1,11 @@
 #Evidence.variant2disease.association_score
 
-THIS NEEDS CHANGING - some, a low number of variants are linked to >1 disease.
-
-Each json record in this dataset contains a unique variant to disease assocation. Thus the binary log-likelihood for all variant to disease associations is the same value: TBC
+Each variant in this dataset is mapped to only one gene. Thus the binary log-likelihood for all variant to disease associations is the same value: 2.53306E-08
 
 Calculated via:
 (total number of json records that share variant to disease association) / (total number of unique variants * total number of unique diseases)
-= (1) / (23624 * 1750)
-= TBC
+= 1 / (23739 * 1663)
+= 2.53306E-08
 
 #Evidence.variant2gene.association_score
 
@@ -97,7 +95,7 @@ This score is the adjusted binary log-likelihood value for the given gene to tra
 
 In each case, the total number of json records that share the same gene to trait association across this dataset was divided by the matrix of possible gene to trait associations:
 (total number of json records that share gene to triat association) / (total number of unique genes * total number of unique traits)
-(X) / (2613 * 1750)
+(X) / (2254 * 1663)
 
 The resulting values were adjusted to account for the confidence associated with each instance of each gene to trait association. 
 Each instance of each gene to trait association is attributed a confidence value of 0-4 (http://www.ncbi.nlm.nih.gov/clinvar/docs/review_guidelines/):
@@ -108,5 +106,5 @@ Each instance of each gene to trait association is attributed a confidence value
 4 - practice guidline
 (There is no representation of a "0" confidence score in any of our data)
 
-To account for the fact that gene to triat associations that are supported by confidence value of "1", or multiple instances of "1"s, are weaker than all other gene to trait associations a downregulating factor of TBC was used.
-Our downregulation factor ensures that the greatest adjusted binary log-likelihood value for the gene to trait relationship supported by "1", or multiple of "1"s, is lower than the lowest adjusted binary log-likelihood value for a gene to trait relationship supported by at least one confidence value greater than 1.
+To account for the fact that gene to triat associations that are supported by confidence value of "1", or multiple instances of "1"s, are weaker than all other gene to trait associations a downregulating factor of 0.0025 was used.
+Our downregulation factor ensures that the highest adjusted binary log-likelihood value for the gene to trait relationship supported by "1", or multiple of "1"s, is lower than the lowest adjusted binary log-likelihood value for a gene to trait relationship supported by at least one confidence value greater than 1.
